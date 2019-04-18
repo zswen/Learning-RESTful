@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import com.wen.api.util.ApiRequestClient;
-import com.wen.api.util.ApiUtilites;
+import com.wen.api.util.ApiUtilities;
 import com.wen.api.util.KeyValuePair;
 import com.wen.api.util.UrlBuilder;
 import com.wen.api.util.ApiRequestClient.HttpMethod;
@@ -30,7 +30,7 @@ public class NasaRunner {
 		System.out.println(url);
 		ApiRequestClient requestClient = new ApiRequestClient();
 		InputStream responseStream = requestClient.establishURLConnection(url, HttpMethod.GET, null);
-		String response = ApiUtilites.convertStreamToString(responseStream);
+		String response = ApiUtilities.convertStreamToString(responseStream);
 		
 		NasaResponseParser responseParser = new NasaResponseParser();
 		
