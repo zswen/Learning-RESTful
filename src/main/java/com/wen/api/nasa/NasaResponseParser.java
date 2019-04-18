@@ -33,12 +33,12 @@ public class NasaResponseParser {
 				
 				String asteroidName = asteroidObject.get("name").getAsString();
 				
-				JsonArray cadArray = asteroidObject.get("close_asteroid_date").getAsJsonArray();
+				JsonArray cadArray = asteroidObject.get("close_approach_data").getAsJsonArray();
 				
 				for (JsonElement cad : cadArray) {
 					JsonObject cadObject = cad.getAsJsonObject();
 					JsonObject velocity = cadObject.get("relative_velocity").getAsJsonObject();
-					String kph = velocity.get("kelometers_per_hour").getAsString();
+					String kph = velocity.get("kilometers_per_hour").getAsString();
 					
 					JsonObject missDistance = cadObject.get("miss_distance").getAsJsonObject();
 					String misKilometers = missDistance.get("kilometers").getAsString();
@@ -56,6 +56,6 @@ public class NasaResponseParser {
 		}
 		
 		
-		return String.format(builder.toString());
+		return String.format(builder.toString(), potentiallyHazardousAsteroidCount);
 	}
 }
